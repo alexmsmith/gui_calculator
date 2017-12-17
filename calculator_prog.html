@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calculator</title>
+	</head>
+	<body>
+		<h1>Calculator</h1>
+		<!-- div will contain button selection -->
+		<input type="text" id="result"><br /><br />
+		<div>
+			<table id="myTable">
+				<tr>
+					<td><button id="zero" value="0" onclick="nums(this.id)">0</button></td>
+					<td><button id="one" value="1" onclick="nums(this.id)">1</button></td>
+					<td><button id="two" value="2" onclick="nums(this.id)">2</button></td>
+					<td><button id="plus" value="+" onclick="symbol(this.id)">+</button></td>
+				</tr>
+				<tr>
+					<td><button id="three" value="3" onclick="nums(this.id)">3</button></td>
+					<td><button id="four" value="4" onclick="nums(this.id)">4</button></td>
+					<td><button id="five" value="5" onclick="nums(this.id)">5</button></td>
+					<td><button id="minus" value="-" onclick="symbol(this.id)">-</button></td>
+				</tr>
+				<tr>
+					<td><button id="six" value="6" onclick="nums(this.id)">6</button></td>
+					<td><button id="seven" value="7" onclick="nums(this.id)">7</button></td>
+					<td><button id="eight" value="8" onclick="nums(this.id)">8</button></td>
+					<td><button id="times" value="*" onclick="symbol(this.id)">*</button></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button id="nine" value="9" onclick="nums(this.id)">9</button></td>
+					<td></td>
+					<td><button id="divide" value="/" onclick="symbol(this.id)">/</button></td>
+				</tr>
+				<tr>
+					<td><button id="equals" value="=" onclick="equals()">=</button></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script>
+		var num1 = '';
+		var n1 = 0;
+		var n2 = 0;
+		var nu = [];
+		var s = '';
+		var subTotal = 0;
+		var str = '';
+
+		function nums(clicked_id) {
+			num1 = document.getElementById(clicked_id).value;
+			document.getElementById('result').value += num1;
+			nu.push(num1);
+		}
+
+		function symbol(clicked_id) {
+			if(n1===0 && n2===0) {
+				document.getElementById("result").value = "";
+				for (i = 0; i < nu.length; i++) {
+					str += nu[i];
+				}
+				n1 = parseInt(str);
+				nu = [];
+				return n1;
+			}
+
+			else if(n1!=0 && n2===0) {
+				document.getElementById("result").value = "";
+				str = '';
+				for (i = 0; i < nu.length; i++) {
+					str += nu[i];
+				}
+				n2 = parseInt(str);
+			}
+
+			// If there is something in the text-field
+			// Write functionality
+
+			s = document.getElementById(clicked_id).value;
+			return s;
+		}
+
+		function equals() {
+			console.log("num1: " + n1);
+			console.log("num2: " + n2);
+			console.log("symbol: " + s);
+			if(s === '+') {
+				subTotal = n1 + n2;
+				console.log("SubTotal: " + subTotal);
+			}else if(s === '-') {
+				subTotal = n1 - n2;
+				console.log("SubTotal: " + subTotal);
+			}else if(s === '*') {
+				subTotal = n1 * n2;
+				console.log("SubTotal: " + subTotal);
+			}else if(s === '/') {
+				subTotal = n1 / n2;
+				console.log("SubTotal: " + subTotal);
+			}
+		}
+	</script>
+</html>
