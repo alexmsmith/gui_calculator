@@ -63,6 +63,7 @@
 				}
 				n1 = parseInt(str);
 				nu = [];
+				s = document.getElementById(clicked_id).value;
 				return n1;
 			}
 
@@ -73,12 +74,13 @@
 					str += nu[i];
 				}
 				n2 = parseInt(str);
+				nu = [];
+				return n2;
 			}
 
 			// If there is something in the text-field
 			// Write functionality
 
-			s = document.getElementById(clicked_id).value;
 			return s;
 		}
 
